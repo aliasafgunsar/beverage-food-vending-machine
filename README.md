@@ -62,32 +62,32 @@ VendingMachine/
 ### 🏗️ Katmanlar
 
 - **Models/**: 
--> Product.cs - Ürün modeli (ID, Name, Price, Stock, Type, IsHotDrink)
--> Order.cs - Sipariş modeli (Product, Quantity, SugarAmount, TotalAmount)
--> Receipt.cs - Fiş modeli (ProductName, ProductNumber, PaymentMethod, AmountPaid, ChangeAmount)
--> PaymentResult.cs - Ödeme sonuç modeli
+- Product.cs - Ürün modeli (ID, Name, Price, Stock, Type, IsHotDrink)
+- Order.cs - Sipariş modeli (Product, Quantity, SugarAmount, TotalAmount)
+- Receipt.cs - Fiş modeli (ProductName, ProductNumber, PaymentMethod, AmountPaid, ChangeAmount)
+- PaymentResult.cs - Ödeme sonuç modeli
 
 - **Enums/**:
--> ProductType.cs - Food, Beverage
--> PaymentMethod.cs - CreditCardContact, CreditCardContactless, CashCoin, CashPaper
--> SugarAmount.cs - None, Low, Medium, High
+- ProductType.cs - Food, Beverage
+- PaymentMethod.cs - CreditCardContact, CreditCardContactless, CashCoin, CashPaper
+- SugarAmount.cs - None, Low, Medium, High
 
 - **Interfaces/**:
--> IProduct.cs - Ürün interface'i
--> IProductRepository.cs - Repository pattern interface
--> IPaymentService.cs - Ödeme servis interface'i
--> IVendingMachineService.cs - Ana iş mantığı interface'i
+- IProduct.cs - Ürün interface'i
+- IProductRepository.cs - Repository pattern interface
+- IPaymentService.cs - Ödeme servis interface'i
+- IVendingMachineService.cs - Ana iş mantığı interface'i
 
 - **Services/ (Infrastructure katmanında)**:
--> PaymentService.cs - Ödeme işlemleri implementasyonu
--> VendingMachineService.cs - Ana iş mantığı implementasyonu
+- PaymentService.cs - Ödeme işlemleri implementasyonu
+- VendingMachineService.cs - Ana iş mantığı implementasyonu
 
 - *Repositories/ (Infrastructure katmanında)**:
--> Repositories/ (Infrastructure katmanında)
--> ProductRepository.cs - Ürün veri erişim katmanı
+- Repositories/ (Infrastructure katmanında)
+- ProductRepository.cs - Ürün veri erişim katmanı
 
 - **WindowsUI/ (UI Katmanı)**:
--> Form1.cs - Ana form ve kullanıcı arayüzü
+- Form1.cs - Ana form ve kullanıcı arayüzü
   
 ---
 
