@@ -1,7 +1,28 @@
-📋 Proje Özeti
-Bu proje, 20 yiyecek ve 10 içecek ürün yuvasına sahip, kredi kartı (temaslı/temassız) ve nakit (kağıt/madeni para) ödeme yöntemlerini destekleyen bir otomat simülasyonudur. Sıcak içecekler için şeker miktarı seçeneği sunar.
+# 📋 Proje Özeti
+# Bu proje, 20 yiyecek ve 10 içecek ürün yuvasına sahip, kredi kartı (temaslı/temassız) ve nakit (kağıt/madeni para) ödeme yöntemlerini destekleyen bir otomat simülasyonudur. Sıcak içecekler için şeker miktarı seçeneği sunar.
 
-🏗️ Proje Mimarisi
+---
+
+## Kurulum Talimatları
+
+1. **Projeyi Klonla:**
+   ```sh
+   git clone https://github.com/aliasafgunsar/vending-machine.git
+   cd vending-machine
+   ```
+
+2. **Solution'ı Açma ve Çalıştırma:**
+   ```sh
+   dotnet build
+   cd VendingMachine.WindowsUI
+   dotnet run
+   ```
+
+## 🏗️ Proje Mimarisi
+
+Proje, sade ve anlaşılır bir klasör yapısına sahiptir:
+
+```
 text
 VendingMachine/
 ├── Core/
@@ -35,115 +56,93 @@ VendingMachine/
     ├── Form1.cs
     ├── Form1.Designer.cs
     └── Program.cs
-🚀 Kurulum Talimatları
-Gereksinimler
-.NET 6.0 veya üzeri
 
-Visual Studio 2022 veya VS Code
+```
 
-Projeyi Çalıştırma
-Projeyi klonlayın:
+### 🏗️ Katmanlar
 
-bash
-git clone https://github.com/kullanici-adi/vending-machine.git
-cd vending-machine
-Solution'ı açın:
+- **Models/**: 
+-> Product.cs - Ürün modeli (ID, Name, Price, Stock, Type, IsHotDrink)
+-> Order.cs - Sipariş modeli (Product, Quantity, SugarAmount, TotalAmount)
+-> Receipt.cs - Fiş modeli (ProductName, ProductNumber, PaymentMethod, AmountPaid, ChangeAmount)
+-> PaymentResult.cs - Ödeme sonuç modeli
 
-bash
-dotnet build
-Windows UI projesini çalıştırın:
+- **Enums/**:
+-> ProductType.cs - Food, Beverage
+-> PaymentMethod.cs - CreditCardContact, CreditCardContactless, CashCoin, CashPaper
+-> SugarAmount.cs - None, Low, Medium, High
 
-bash
-cd VendingMachine.WindowsUI
-dotnet run
-🧩 Kullanılan Teknolojiler
-.NET 6.0 - Ana framework
+- **Interfaces/**:
+-> IProduct.cs - Ürün interface'i
+-> IProductRepository.cs - Repository pattern interface
+-> IPaymentService.cs - Ödeme servis interface'i
+-> IVendingMachineService.cs - Ana iş mantığı interface'i
 
-Windows Forms - Kullanıcı arayüzü
+- **Services/ (Infrastructure katmanında)**:
+-> PaymentService.cs - Ödeme işlemleri implementasyonu
+-> VendingMachineService.cs - Ana iş mantığı implementasyonu
 
-MSTest - Unit testler
+- *Repositories/ (Infrastructure katmanında)**:
+-> Repositories/ (Infrastructure katmanında)
+-> ProductRepository.cs - Ürün veri erişim katmanı
 
-SOLID Principles - Yazılım tasarım prensipleri
+- **WindowsUI/ (UI Katmanı)**:
+-> Form1.cs - Ana form ve kullanıcı arayüzü
+  
+---
 
-Dependency Injection - Bağımlılık yönetimi
+## 🛠️ Kullanılan Teknolojiler
 
-✨ Özellikler
-✅ 20 yiyecek + 10 içecek ürün yuvası
+- **.NET 6.0 (Windows Forms App)**
+- **C# (Nesne yönelimli programlama)**
+- **SOLID Principles (Katmanlı mimari)**
+- **Dependency Injection (Manuel implementation)**
+- **xUnit (Unit test framework)**
+- **Moq (Mocking kütüphanesi)**
+- **Windows Forms (UI framework)**
+- **LINQ (Data manipulation)**
+- **OOP Patterns (Repository, Service patterns)**
 
-✅ Miktar seçimi (1-10 adet)
+---
 
-✅ Sıcak içecekler için şeker miktarı seçeneği (Şekersiz, Az, Orta, Çok)
+## ✨  Proje Özellikleri
 
-✅ Çoklu ödeme yöntemleri:
+- ✅ 20 yiyecek + 10 içecek ürün yuvası
+- ✅ Miktar seçimi (1-10 adet)
+- ✅ Sıcak içecekler için şeker miktarı seçeneği (Şekersiz, Az, Orta, Çok)
+- ✅ Çoklu ödeme yöntemleri:
+- ✅ Temaslı Kredi Kartı, Temassız Kredi Kartı, Nakit (Kağıt Para), Nakit (Madeni Para)
+- ✅ Detaylı fiş bilgisi (ürün adı, numara, ödeme yöntemi, para üstü)
+- ✅ Türkçe ve kullanıcı dostu arayüz
 
-Temaslı Kredi Kartı
+---
 
-Temassız Kredi Kartı
+## 🧪 Test Kapsamı
 
-Nakit (Kağıt Para)
+- **Proje, %70'ten fazla test kapsamına sahiptir:**
 
-Nakit (Madeni Para)
+- Ürün repository testleri
+- Ödeme servisi testleri
+- Otomat servisi testleri
+- Stok kontrolü testleri
+- Sipariş oluşturma testleri
 
-✅ Detaylı fiş bilgisi (ürün adı, numara, ödeme yöntemi, para üstü)
+---
 
-✅ Türkçe ve kullanıcı dostu arayüz
-
-🧪 Test Kapsamı
-Proje, %70'ten fazla test kapsamına sahiptir:
-
-bash
-cd VendingMachine.Tests
-dotnet test
-Testler aşağıdaki senaryoları kapsar:
-
-Ürün repository testleri
-
-Ödeme servisi testleri
-
-Otomat servisi testleri
-
-Stok kontrolü testleri
-
-Sipariş oluşturma testleri
-
-📸 Ekran Görüntüleri
-(Bu kısmı projeyi çalıştırdıktan sonra ekran görüntüleriyle doldurabilirsiniz)
-
-🔧 Geliştirme
-Yeni Özellik Ekleme
-Proje SOLID prensiplerine uygun şekilde tasarlandığı için yeni özellikler kolayca eklenebilir:
-
-Yeni kampanya eklemek için:
-
-Yeni bir service interface'i oluşturun
-
-Mevcut servislere dependency injection ile ekleyin
-
-Yeni ödeme yöntemi eklemek için:
-
-PaymentMethod enum'una yeni değer ekleyin
-
-PaymentService'i güncelleyin
-
-Kod Yapısı
-csharp
-// Örnek servis kullanımı
-var productRepository = new ProductRepository();
-var paymentService = new PaymentService();
-var vendingMachineService = new VendingMachineService(productRepository, paymentService);
-
-// Sipariş oluşturma
-var order = vendingMachineService.CreateOrder(productId, quantity, sugarAmount);
-
-// Ödeme işlemi
-var receipt = vendingMachineService.ProcessPayment(order, paymentMethod, amountPaid);
 📝 Lisans
 Bu proje MIT lisansı altında lisanslanmıştır.
 
-👨‍💻 Geliştirici
-Ali Asaf Günşar
-📧 aliasafgunsar@gmail.com
-🌐 Portfolyo Website
-🔗 LinkedIn Profili
+---
 
-Not: Bu proje bir case study olarak .NET Core ve SOLID prensipleri kullanılarak geliştirilmiştir. Gerçek ödeme sistemleri entegre edilmemiştir.
+## Not
+
+- Bu proje bir case study olarak .NET Core ve SOLID prensipleri kullanılarak geliştirilmiştir. Gerçek ödeme sistemleri entegre edilmemiştir.
+
+---
+
+## 👨‍💻 Geliştirici
+
+**Ali Asaf Günşar**  
+📧 aliasafgunsar@gmail.com  
+🌐 [Sitem](https://aliasafgunsar.com)  
+🔗 [LinkedIn Profilim](https://linkedin.com/in/aliasafgunsar)
